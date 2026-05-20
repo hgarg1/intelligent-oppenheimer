@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Charter | Elysium Residences</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  
+  <style>
+    body {
+      background-color: #080808;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .charter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      margin: 4rem auto;
+      max-width: 1200px;
+      padding: 0 2rem;
+    }
+    
+    @media (max-width: 991px) {
+      .charter-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+    
+    .charter-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .charter-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(197, 160, 89, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(197, 160, 89, 0.08);
+    }
+    
+    .charter-card svg {
+      transition: transform 0.4s ease;
+    }
+    
+    .charter-card:hover svg {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .back-link:hover svg {
+      transform: translateX(-5px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
+
+  <!-- Morphing Header Navigation -->
+  <header class="main-header" id="main-header">
+    <div class="nav-container">
+      <a href="../" class="back-link" style="color: var(--accent-gold); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; font-family: Outfit, sans-serif; font-size: 0.95rem; letter-spacing: 0.05em; font-weight: 500;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Sanctuary
+      </a>
+      <div class="nav-logo">
+        <a href="../" class="logo-text" style="text-decoration: none; color: #fff;">ELYSIUM <span style="color: var(--accent-gold);">✦</span></a>
+      </div>
+      <a href="../#contact" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Reserve Tour</a>
+    </div>
+  </header>
+
+  <!-- Atmospheric Hero Section -->
+  <section class="subpage-hero" style="position: relative; padding: 11rem 2rem 5rem; text-align: center; background: radial-gradient(circle at top right, rgba(197, 160, 89, 0.06) 0%, transparent 60%);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <div class="hero-badge" style="display: inline-block; padding: 0.5rem 1.2rem; border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 30px; font-family: Outfit, sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 1.5rem; background: rgba(197, 160, 89, 0.02); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">✦ Executive Mandate ✦</div>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; letter-spacing: 0.05em; color: #fff; line-height: 1.1; margin-bottom: 1.5rem;">Privacy Charter</h1>
+      <p style="font-family: Outfit, sans-serif; font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto; line-height: 1.6; font-weight: 300;">An absolute, legally-binding commitment to sovereign anonymity, physical signal deflection, and digital perimeter integrity for the residents of Elysium.</p>
+    </div>
+  </section>
+
+  <!-- Luxury Dividers -->
+  <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.2) 50%, transparent); max-width: 1200px; margin: 0 auto;"></div>
+
+  <!-- Detailed Charter Content Grid -->
+  <main class="charter-grid">
+    
+    <!-- Item 1 -->
+    <div class="charter-card glass-panel" style="padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: 0.02em;">Client Anonymity Mandate</h2>
+      <p style="font-family: Outfit, sans-serif; line-height: 1.6; font-size: 0.95rem; font-weight: 300;">
+        Elysium enforces a strict, standard-operating non-disclosure protocol. Owner registries and trust profiles are processed via sovereign encrypted trusts. All staff sign comprehensive, life-lasting confidentiality agreements. Photographic devices are strictly restricted within public spaces, preserving visual confidentiality as a fundamental resident right.
+      </p>
+      <ul style="font-family: Outfit, sans-serif; font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+        <li>Sovereign asset-holding registry isolation</li>
+        <li>Compulsory staff NDAs with severe legal covenants</li>
+        <li>Zero-tolerance policy for external visual capture</li>
+        <li>Shielded guest arrival registration portals</li>
+      </ul>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="charter-card glass-panel" style="padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><circle cx="12" cy="20" r="1"></circle></svg>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: 0.02em;">Physical & Signal Shielding</h2>
+      <p style="font-family: Outfit, sans-serif; line-height: 1.6; font-size: 0.95rem; font-weight: 300;">
+        The facade of Elysium is engineered with advanced technical barriers. Window glazes contain microscopic metallic layers forming a contiguous Faraday cage, blocking high-frequency RF eavesdropping and drone surveillance. Localized high-density optical scramblers deflect infrared laser microphones, guaranteeing that private conversations remain absolutely secure.
+      </p>
+      <ul style="font-family: Outfit, sans-serif; font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+        <li>Faraday envelope built directly into heavy structural glazing</li>
+        <li>Active optical laser audio deflection screens</li>
+        <li>Localized multi-frequency radio signal containment blocks</li>
+        <li>Geofenced private communication lines</li>
+      </ul>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="charter-card glass-panel" style="padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: 0.02em;">Biometric & Ephemeral Access</h2>
+      <p style="font-family: Outfit, sans-serif; line-height: 1.6; font-size: 0.95rem; font-weight: 300;">
+        Security integrations respect residency flow while keeping personal identity profiles locally isolated. Elevators and residence portals read high-definition retinal patterns and finger vein maps, avoiding standard plastic keycards that can be duplicated. Database logs are strictly ephemeral, deleting historical transit footprints every 128 hours.
+      </p>
+      <ul style="font-family: Outfit, sans-serif; font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+        <li>Retinal scan & finger vein vascular biometric locks</li>
+        <li>No permanent historical location logs compiled</li>
+        <li>Locally self-contained offline security databases</li>
+        <li>Encrypted client keys cycling automatically</li>
+      </ul>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="charter-card glass-panel" style="padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: 0.02em;">Subterranean Transit Envelope</h2>
+      <p style="font-family: Outfit, sans-serif; line-height: 1.6; font-size: 0.95rem; font-weight: 300;">
+        Arrival and departure cycles are treated with absolute spatial isolation. Elysium houses a reinforced subterranean garage system with dual airlock blast-doors. Private armored vehicles enter designated secure bays, bypassing standard public driveways. Direct express elevators link these isolated bays straight to private penthouses.
+      </p>
+      <ul style="font-family: Outfit, sans-serif; font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+        <li>Double-door airlock armored subterranean entry</li>
+        <li>Private, secure transit bays with absolute blind-spots</li>
+        <li>Direct-to-suite express elevators bypassing public floors</li>
+        <li>Sovereign vehicle registration scanner plates</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- Interactive Cryptographic Seal Section -->
+  <section class="interactive-section" style="padding: 5rem 2rem 8rem; background: linear-gradient(180deg, transparent, rgba(197,160,89,0.02) 50%, transparent);">
+    <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <div class="glass-panel" style="padding: 3.5rem 3rem; position: relative; overflow: hidden; border-radius: 16px;">
+        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(197,160,89,0.08) 0%, transparent 70%); pointer-events: none;"></div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 300; color: #fff; margin-bottom: 1rem; letter-spacing: 0.05em;">Generate Sovereign Session Seal</h2>
+        <p style="font-family: Outfit, sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; line-height: 1.6; font-weight: 300; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Enter your primary legal alias or private corporate registry name to generate a cryptographically signed, single-use session key corresponding to Elysium's secure local network servers.
+        </p>
+        
+        <div style="display: flex; flex-direction: column; gap: 1.2rem; max-width: 500px; margin: 0 auto;">
+          <input type="text" id="crypt-alias-input" placeholder="Enter Registry Name / Anonymous Alias" style="background: rgba(8,8,8,0.6); border: 1px solid rgba(197,160,89,0.2); color: #fff; padding: 1.1rem 1.5rem; border-radius: 8px; font-family: Outfit, sans-serif; font-size: 1rem; outline: none; text-align: center; transition: border-color 0.3s ease, box-shadow 0.3s ease; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);">
+          <button id="btn-generate-seal" class="btn-primary" style="padding: 1.1rem 2rem; letter-spacing: 0.15em; font-size: 0.9rem; font-weight: 600;">COMPOSE SECURE SEAL</button>
+        </div>
+        
+        <!-- Seal output -->
+        <div id="seal-result-container" style="margin-top: 3rem; display: none; opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; transform: translateY(15px);">
+          <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(197,160,89,0.3) 50%, transparent); margin-bottom: 2.5rem;"></div>
+          <div style="font-family: monospace; font-size: 0.85rem; color: var(--accent-gold); background: rgba(197,160,89,0.03); border: 1px dashed rgba(197, 160, 89, 0.3); padding: 2rem; border-radius: 8px; line-height: 1.8; word-break: break-all; text-align: left; max-width: 550px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(197,160,89,0.05); position: relative;">
+            <div style="position: absolute; top: 10px; right: 15px; font-size: 0.7rem; color: rgba(197,160,89,0.4); font-weight: bold;">[SECURE DATA ENVELOPE]</div>
+            <div style="text-align: center; margin-bottom: 1.2rem; font-weight: bold; letter-spacing: 0.15em; font-family: Outfit, sans-serif; border-bottom: 1px solid rgba(197,160,89,0.15); padding-bottom: 0.6rem;">✦ ELYSIUM REGISTRY SEAL ✦</div>
+            <div id="seal-timestamp">TIMESTAMP: </div>
+            <div id="seal-registry">REGISTRY: ACTIVE & SHIELDED</div>
+            <div id="seal-alias">OWNER IDENTITY: </div>
+            <div id="seal-hash">KEY HASH: </div>
+            <div id="seal-signature" style="color: #4cd137; font-weight: bold; margin-top: 0.5rem; text-shadow: 0 0 10px rgba(76,209,55,0.2);">VERIFICATION: CERTIFIED / SIGNATURE ACQUIRED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer style="background: rgba(6,6,6,0.9); border-top: 1px solid rgba(255,255,255,0.03); padding: 5rem 2rem 3rem; text-align: center; position: relative;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <div style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; letter-spacing: 0.1em; margin-bottom: 1.5rem; font-weight: 300;">ELYSIUM <span style="color: var(--accent-gold);">✦</span></div>
+      <p style="font-family: Outfit, sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.4); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; font-weight: 300; line-height: 1.6;">
+        Residences designed to elevate physical safety and absolute private seclusion. Managed by the Elysium Concierge Group. All rights reserved.
+      </p>
+      
+      <!-- Subpage legal links -->
+      <div class="footer-legal-links" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-family: Outfit, sans-serif; font-size: 0.85rem; letter-spacing: 0.05em;">
+        <a href="../admin" style="color: var(--accent-gold); font-weight: 500; text-decoration: none;">✦ Registry Admin</a>
+        <a href="../privacy/" style="color: #fff; text-decoration: none; font-weight: 500;">Privacy Charter</a>
+        <a href="../security/" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.4)'">Security Protocol</a>
+        <a href="../helipad/" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.4)'">FAA Helipad License</a>
+      </div>
+      
+      <div style="height: 1px; background: rgba(255,255,255,0.03); margin: 3rem 0 2rem;"></div>
+      <p style="font-family: Outfit, sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 300;">&copy; 2026 Elysium Residences Group. Developed by Antigravity.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../app.js" defer></script>
+  
+  <!-- Interactive script logic for local generator -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const aliasInput = document.getElementById('crypt-alias-input');
+      const genBtn = document.getElementById('btn-generate-seal');
+      const resultContainer = document.getElementById('seal-result-container');
+      
+      const tsDiv = document.getElementById('seal-timestamp');
+      const aliasDiv = document.getElementById('seal-alias');
+      const hashDiv = document.getElementById('seal-hash');
+
+      // Add input focus effects
+      aliasInput.addEventListener('focus', () => {
+        aliasInput.style.borderColor = 'rgba(197, 160, 89, 0.6)';
+        aliasInput.style.boxShadow = '0 0 15px rgba(197, 160, 89, 0.25), inset 0 2px 10px rgba(0,0,0,0.5)';
+      });
+      
+      aliasInput.addEventListener('blur', () => {
+        aliasInput.style.borderColor = 'rgba(197, 160, 89, 0.2)';
+        aliasInput.style.boxShadow = 'inset 0 2px 10px rgba(0,0,0,0.5)';
+      });
+
+      genBtn.addEventListener('click', () => {
+        const nameVal = aliasInput.value.trim();
+        if (!nameVal) {
+          aliasInput.style.borderColor = '#ff6b6b';
+          aliasInput.style.boxShadow = '0 0 15px rgba(255,107,107,0.25), inset 0 2px 10px rgba(0,0,0,0.5)';
+          return;
+        }
+
+        // Generate customized cryptographic parameters
+        const now = new Date();
+        const timestampStr = now.toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+        
+        // Custom secure key hashing simulation
+        let secureHash = '';
+        const rawString = nameVal + now.getTime() + 'ELYSIUM-SECURITY';
+        for(let i=0; i<rawString.length; i++) {
+          secureHash += rawString.charCodeAt(i).toString(16);
+        }
+        secureHash = '0x' + secureHash.substring(0, 32).toUpperCase();
+
+        // Inject content
+        tsDiv.innerHTML = `TIMESTAMP: <span style="color: #fff;">${timestampStr}</span>`;
+        aliasDiv.innerHTML = `OWNER IDENTITY: <span style="color: #fff;">${nameVal.toUpperCase()}</span>`;
+        hashDiv.innerHTML = `KEY HASH: <span style="color: #fff;">${secureHash}</span>`;
+
+        // Animation triggers
+        resultContainer.style.display = 'block';
+        setTimeout(() => {
+          resultContainer.style.opacity = '1';
+          resultContainer.style.transform = 'translateY(0)';
+        }, 50);
+
+        // Smooth scroll to seal container
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  </script>
+</body>
+</html>

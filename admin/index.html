@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registry Admin System | Elysium Residences</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  
+  <style>
+    body {
+      background-color: #080808;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .back-link:hover svg {
+      transform: translateX(-5px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
+
+  <!-- Morphing Header Navigation -->
+  <header class="main-header" id="main-header">
+    <div class="nav-container">
+      <a href="../" class="back-link" style="color: var(--accent-gold); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; font-family: Outfit, sans-serif; font-size: 0.95rem; letter-spacing: 0.05em; font-weight: 500;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Sanctuary
+      </a>
+      <div class="nav-logo">
+        <a href="../" class="logo-text" style="text-decoration: none; color: #fff;">ELYSIUM <span style="color: var(--accent-gold);">✦</span></a>
+      </div>
+      <a href="../#contact" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Reserve Tour</a>
+    </div>
+  </header>
+
+  <!-- Atmospheric Hero Section -->
+  <section class="subpage-hero" style="position: relative; padding: 11rem 2rem 3rem; text-align: center; background: radial-gradient(circle at top right, rgba(197, 160, 89, 0.06) 0%, transparent 60%);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <div class="hero-badge" style="display: inline-block; padding: 0.5rem 1.2rem; border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 30px; font-family: Outfit, sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 1.5rem; background: rgba(197, 160, 89, 0.02); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">✦ CRM Database required ✦</div>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 300; letter-spacing: 0.05em; color: #fff; line-height: 1.1; margin-bottom: 1.5rem;">Administration Portal</h1>
+      <p style="font-family: Outfit, sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto; line-height: 1.6; font-weight: 300;">Secure, enterprise-grade concierge registry database console managing VIP private tour reservations.</p>
+    </div>
+  </section>
+
+  <!-- Luxury Dividers -->
+  <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.2) 50%, transparent); max-width: 1200px; margin: 0 auto;"></div>
+
+  <!-- Technical Explainer Card -->
+  <main style="padding: 2rem 2rem 6rem; text-align: center;">
+    <div class="glass-panel" style="padding: 3.5rem 3rem; border: 1px solid rgba(197,160,89,0.3); border-radius: 16px; background: rgba(197, 160, 89, 0.02); text-align: left; max-width: 750px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 30px rgba(197,160,89,0.06); position: relative; overflow: hidden;">
+      <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(197,160,89,0.08) 0%, transparent 70%); pointer-events: none;"></div>
+      
+      <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+        <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold); flex-shrink: 0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <div>
+          <h2 style="font-family: 'Playfair Display', serif; color: #fff; font-size: 1.7rem; margin-bottom: 0.8rem; font-weight: 400; letter-spacing: 0.02em;">Server Connection Required</h2>
+          <p style="font-family: Outfit, sans-serif; font-size: 0.95rem; line-height: 1.7; font-weight: 300; color: rgba(255,255,255,0.75);">
+            This administrative dashboard is integrated with a high-performance **Spring Boot 2.7.x Java microservice** and a **transactional SQLite relational database** using JPA/Hibernate mappings.
+          </p>
+          <p style="font-family: Outfit, sans-serif; font-size: 0.95rem; line-height: 1.7; font-weight: 300; margin-top: 1.2rem; color: rgba(255,255,255,0.5);">
+            To explore the live grid, run the local server using the Maven wrapper:
+          </p>
+          <code style="display: block; background: rgba(0,0,0,0.5); padding: 1.1rem; border-radius: 8px; font-family: monospace; font-size: 0.85rem; margin-top: 0.8rem; border: 1px solid rgba(255,255,255,0.06); color: var(--accent-gold); word-break: break-all; box-shadow: inset 0 2px 8px rgba(0,0,0,0.8);">.\mvnw.cmd spring-boot:run</code>
+          
+          <p style="font-family: Outfit, sans-serif; font-size: 0.95rem; line-height: 1.7; font-weight: 300; margin-top: 1.5rem; border-top: 1px dashed rgba(197,160,89,0.15); padding-top: 1.5rem;">
+            Once launched locally, click the link below to authenticate and manage VIP reservations in the reactive grid:
+          </p>
+          <a href="http://localhost:8085/admin" target="_blank" style="display: inline-block; color: #080808; background: var(--accent-gold); padding: 0.9rem 1.8rem; border-radius: 4px; text-decoration: none; font-family: Outfit, sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; margin-top: 1rem; border: 1px solid var(--accent-gold); transition: background 0.3s, color 0.3s; box-shadow: 0 10px 25px rgba(197, 160, 89, 0.25);" onmouseenter="this.style.background='transparent'; this.style.color='var(--accent-gold)'" onmouseleave="this.style.background='var(--accent-gold)'; this.style.color='#080808'">OPEN LOCAL CONSOLE</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Luxury Footer -->
+  <footer style="background: rgba(6,6,6,0.9); border-top: 1px solid rgba(255,255,255,0.03); padding: 5rem 2rem 3rem; text-align: center; position: relative;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <div style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; letter-spacing: 0.1em; margin-bottom: 1.5rem; font-weight: 300;">ELYSIUM <span style="color: var(--accent-gold);">✦</span></div>
+      <p style="font-family: Outfit, sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.4); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; font-weight: 300; line-height: 1.6;">
+        Residences designed to elevate physical safety and absolute private seclusion. Managed by the Elysium Concierge Group. All rights reserved.
+      </p>
+      
+      <!-- Subpage legal links -->
+      <div class="footer-legal-links" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-family: Outfit, sans-serif; font-size: 0.85rem; letter-spacing: 0.05em;">
+        <a href="../admin/" style="color: var(--accent-gold); font-weight: 500; text-decoration: none;">✦ Registry Admin</a>
+        <a href="../privacy/" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.4)'">Privacy Charter</a>
+        <a href="../security/" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.4)'">Security Protocol</a>
+        <a href="../helipad/" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.4)'">FAA Helipad License</a>
+      </div>
+      
+      <div style="height: 1px; background: rgba(255,255,255,0.03); margin: 3rem 0 2rem;"></div>
+      <p style="font-family: Outfit, sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 300;">&copy; 2026 Elysium Residences Group. Developed by Antigravity.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../app.js" defer></script>
+</body>
+</html>

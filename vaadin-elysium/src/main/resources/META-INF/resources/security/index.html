@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Protocol | Elysium Residences</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  
+  <style>
+    body {
+      background-color: #080808;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      margin: 4rem auto;
+      max-width: 1200px;
+      padding: 0 2rem;
+    }
+    
+    @media (max-width: 991px) {
+      .protocol-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+    
+    .protocol-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .protocol-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+    
+    .protocol-card:hover::before {
+      transform: translateX(100%);
+    }
+    
+    .protocol-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(197, 160, 89, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(197, 160, 89, 0.08);
+    }
+    
+    .protocol-card svg {
+      transition: transform 0.4s ease;
+    }
+    
+    .protocol-card:hover svg {
+      transform: scale(1.1);
+      color: #fff;
+    }
+    
+    .back-link:hover svg {
+      transform: translateX(-5px);
+    }
+    
+    /* Technical Diagnostic Styles */
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-family: Outfit, sans-serif;
+    }
+    
+    .metric-bar-bg {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    
+    .metric-bar-fill {
+      height: 100%;
+      width: 45%;
+      background: linear-gradient(90deg, rgba(197,160,89,0.5), var(--accent-gold));
+      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+      border-radius: 4px;
+    }
+    
+    .log-line {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 0.4rem;
+      text-align: left;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
+
+  <!-- Morphing Header Navigation -->
+  <header class="main-header" id="main-header">
+    <div class="nav-container">
+      <a href="../" class="back-link" style="color: var(--accent-gold); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; font-family: Outfit, sans-serif; font-size: 0.95rem; letter-spacing: 0.05em; font-weight: 500;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Sanctuary
+      </a>
+      <div class="nav-logo">
+        <a href="../" class="logo-text" style="text-decoration: none; color: #fff;">ELYSIUM <span style="color: var(--accent-gold);">✦</span></a>
+      </div>
+      <a href="../#contact" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Reserve Tour</a>
+    </div>
+  </header>
+
+  <!-- Atmospheric Hero Section -->
+  <section class="subpage-hero" style="position: relative; padding: 11rem 2rem 5rem; text-align: center; background: radial-gradient(circle at top right, rgba(197, 160, 89, 0.06) 0%, transparent 60%);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <div class="hero-badge" style="display: inline-block; padding: 0.5rem 1.2rem; border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 30px; font-family: Outfit, sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 1.5rem; background: rgba(197, 160, 89, 0.02); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">✦ Military-Spec Defense ✦</div>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 300; letter-spacing: 0.05em; color: #fff; line-height: 1.1; margin-bottom: 1.5rem;">Security Protocol</h1>
+      <p style="font-family: Outfit, sans-serif; font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto; line-height: 1.6; font-weight: 300;">An impenetrable ring of multi-layer active surveillance, biometric entry barriers, chemical air scrubbing, and dedicated quick-response tactical commands.</p>
+    </div>
+  </section>
+
+  <!-- Luxury Dividers -->
+  <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.2) 50%, transparent); max-width: 1200px; margin: 0 auto;"></div>
+
+  <!-- Detailed Protocol Content Grid -->
+  <main class="protocol-grid">
+    
+    <!-- Item 1 -->
+    <div class="protocol-card glass-panel" style="padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: 0.02em;">Active Perimeter Surveillance</h2>
+      <p style="font-family: Outfit, sans-serif; line-height: 1.6; font-size: 0.95rem; font-weight: 300;">
+        Elysium's physical perimeter is enclosed by an intelligent monitoring array. Utilizing advanced thermal optics and ultra-high-definition volumetric radar, the system forms a continuous 3D security screen around the tower structure. Artificial intelligence models actively classify external assets to identify, track, and deflect potential security threats before arrival.
+      </p>
+      <ul style="font-family: Outfit, sans-serif; font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+        <li>24/7 volumetric radar spatial threat scanning</li>
+        <li>Active AI object and intent identification algorithms</li>
+        <li>Thermal and multi-spectral optronic camera pods</li>
+        <li>Instant geofence break alert coordinates</li>
+      </ul>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="protocol-card glass-panel" style="padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: 0.02em;">NBC Filtration & Pressurized Enclaves</h2>
+      <p style="font-family: Outfit, sans-serif; line-height: 1.6; font-size: 0.95rem; font-weight: 300;">
+        Residences are engineered to insulate occupants against environmental or bio-chemical hazards. Each penthouse is fitted with an autonomous, high-load Class-100 NBC (Nuclear, Biological, Chemical) carbon filtration system. If external sensors register an atmosphere compromise, bulkheads lock immediately, pressurizing the residence with clean reserves.
+      </p>
+      <ul style="font-family: Outfit, sans-serif; font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+        <li>Automated structural positive-pressure hermetic seals</li>
+        <li>Military-grade Class-100 triple carbon filtration cores</li>
+        <li>Independent closed-loop oxygen reserve banks</li>
+        <li>Autonomous atmospheric quality diagnostic sensors</li>
+      </ul>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="protocol-card glass-panel" style="padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: 0.02em;">Armored Subterranean Escape Vaults</h2>
+      <p style="font-family: Outfit, sans-serif; line-height: 1.6; font-size: 0.95rem; font-weight: 300;">
+        Deep beneath the foundation layers lies the Elysium Escape Complex. Anchored into bed-rock with high-stroke seismic dampers, the complex houses reinforced concrete vaults with heavy hydraulic steel blast bulkheads. Secure emergency shafts integrate direct extraction elevators, linking the penthouses straight to subterranean armored vehicles.
+      </p>
+      <ul style="font-family: Outfit, sans-serif; font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+        <li>Seismic-isolated reinforced concrete core vault</li>
+        <li>12-ton hydraulic steel blast bulkheads</li>
+        <li>Sub-surface armored vehicular transit escape lanes</li>
+        <li>Direct suite gravity extraction transit shafts</li>
+      </ul>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="protocol-card glass-panel" style="padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.25); display: flex; align-items: center; justify-content: center; color: var(--accent-gold);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      </div>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; letter-spacing: 0.02em;">Elite Tactical Quick-Response Detail</h2>
+      <p style="font-family: Outfit, sans-serif; line-height: 1.6; font-size: 0.95rem; font-weight: 300;">
+        On-premise defense is coordinated by our 24/7 elite protection staff. Composed exclusively of highly trained, background-vetted quick-response specialists, the team manages the Command Center. Equipped with private armored transports and real-time sovereign security links, they stand ready to coordinate swift extraction operations under all contingencies.
+      </p>
+      <ul style="font-family: Outfit, sans-serif; font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+        <li>24/7 on-site ex-special forces tactical coordinators</li>
+        <li>Dedicated armored private response vehicles</li>
+        <li>Encrypted sovereign communications Command Center</li>
+        <li>Active police and elite private extraction channels</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- Interactive Tactical Status Panel -->
+  <section class="interactive-section" style="padding: 5rem 2rem 8rem; background: linear-gradient(180deg, transparent, rgba(197,160,89,0.02) 50%, transparent);">
+    <div class="container" style="max-width: 850px; margin: 0 auto; text-align: center;">
+      <div class="glass-panel" style="padding: 3.5rem 3rem; border-radius: 16px; border: 1px solid rgba(197, 160, 89, 0.2); background: rgba(8, 8, 8, 0.7); backdrop-filter: blur(30px); position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.8);">
+        
+        <!-- Ambient Glowing Details -->
+        <div style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(197,160,89,0.05) 0%, transparent 70%); pointer-events: none;"></div>
+        <div style="position: absolute; bottom: 10px; right: 15px; font-family: monospace; font-size: 0.65rem; color: rgba(197,160,89,0.3); text-align: right; pointer-events: none;">PERIMETER CONTROLLERS: SHIELD ACTIVE<br>NBC COMPLIANCE: GEN-4 PRESSURIZED</div>
+        
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 300; color: #fff; margin-bottom: 0.8rem; letter-spacing: 0.05em;">Tactical Diagnostics Console</h2>
+        <p style="font-family: Outfit, sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.6); margin-bottom: 3rem; font-weight: 300; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+          Execute a secure diagnostic scan of the structural grids to analyze real-time perimeter shielding, air quality indices, subterranean locking status, and rapid responder readiness.
+        </p>
+
+        <!-- Technical Meters -->
+        <div style="max-width: 600px; margin: 0 auto; text-align: left;">
+          
+          <!-- Meter 1 -->
+          <div>
+            <div class="metric-row">
+              <span style="font-weight: 500; color: #fff; letter-spacing: 0.05em; font-size: 0.9rem;">✦ ACTIVE PERIMETER RADAR SCREEN</span>
+              <span id="metric-percent-1" style="color: var(--accent-gold); font-family: monospace; font-size: 1rem; font-weight: 600;">45.2%</span>
+            </div>
+            <div class="metric-bar-bg">
+              <div class="metric-bar-fill" id="metric-bar-1" style="width: 45.2%;"></div>
+            </div>
+          </div>
+
+          <!-- Meter 2 -->
+          <div>
+            <div class="metric-row">
+              <span style="font-weight: 500; color: #fff; letter-spacing: 0.05em; font-size: 0.9rem;">✦ NBC ATMOSPHERIC PURITY SHIELD</span>
+              <span id="metric-percent-2" style="color: var(--accent-gold); font-family: monospace; font-size: 1rem; font-weight: 600;">58.7%</span>
+            </div>
+            <div class="metric-bar-bg">
+              <div class="metric-bar-fill" id="metric-bar-2" style="width: 58.7%;"></div>
+            </div>
+          </div>
+
+          <!-- Meter 3 -->
+          <div>
+            <div class="metric-row">
+              <span style="font-weight: 500; color: #fff; letter-spacing: 0.05em; font-size: 0.9rem;">✦ SUBTERRANEAN ESCAPE AIRLOCKS</span>
+              <span id="metric-percent-3" style="color: var(--accent-gold); font-family: monospace; font-size: 1rem; font-weight: 600;">61.4%</span>
+            </div>
+            <div class="metric-bar-bg">
+              <div class="metric-bar-fill" id="metric-bar-3" style="width: 61.4%;"></div>
+            </div>
+          </div>
+
+          <!-- Meter 4 -->
+          <div>
+            <div class="metric-row">
+              <span style="font-weight: 500; color: #fff; letter-spacing: 0.05em; font-size: 0.9rem;">✦ RAPID RESPONSE DEFENSE ALIGNMENT</span>
+              <span id="metric-percent-4" style="color: var(--accent-gold); font-family: monospace; font-size: 1rem; font-weight: 600;">38.9%</span>
+            </div>
+            <div class="metric-bar-bg">
+              <div class="metric-bar-fill" id="metric-bar-4" style="width: 38.9%;"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <button id="btn-initiate-diagnostic" class="btn-primary" style="padding: 1.1rem 2.5rem; letter-spacing: 0.15em; font-size: 0.9rem; font-weight: 600; margin-top: 1rem;">INITIATE SECURE DIAGNOSTIC</button>
+
+        <!-- Diagnostic rolling console logs -->
+        <div id="diagnostic-logs-container" style="margin-top: 3rem; display: none; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.8); max-height: 180px; overflow-y: auto;">
+          <div class="log-line" id="log-line-1">&gt; SECURITY SHELL DIAGNOSTIC LAUNCHED... [CONNECTING SECURE KERNEL]</div>
+          <div class="log-line" id="log-line-2" style="display:none;">&gt; RETRIEVING GEOSPATIAL VECTOR MAPS... [SUCCESS]</div>
+          <div class="log-line" id="log-line-3" style="display:none;">&gt; POLLING NBC PRESSURIZATION VALVES... [ACTIVE / COMPRESSED]</div>
+          <div class="log-line" id="log-line-4" style="display:none;">&gt; VERIFYING 12-TON SUB-SURFACE LOCK CYLINDERS... [SEAL HYDRAULICS ON]</div>
+          <div class="log-line" id="log-line-5" style="display:none;">&gt; CONTACTING COMMAND DEFENSE PATROL ROSTERS... [ONLINE / 14 COORDINATORS STAGED]</div>
+          <div class="log-line" id="log-line-6" style="color:var(--accent-gold); font-weight:bold; display:none;">&gt; ALL GRIDS SCAN SECURED: STATUS CERTIFIED V-99.98% / ENVELOPE ARMORED</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer style="background: rgba(6,6,6,0.9); border-top: 1px solid rgba(255,255,255,0.03); padding: 5rem 2rem 3rem; text-align: center; position: relative;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <div style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; letter-spacing: 0.1em; margin-bottom: 1.5rem; font-weight: 300;">ELYSIUM <span style="color: var(--accent-gold);">✦</span></div>
+      <p style="font-family: Outfit, sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.4); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; font-weight: 300; line-height: 1.6;">
+        Residences designed to elevate physical safety and absolute private seclusion. Managed by the Elysium Concierge Group. All rights reserved.
+      </p>
+      
+      <!-- Subpage legal links -->
+      <div class="footer-legal-links" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-family: Outfit, sans-serif; font-size: 0.85rem; letter-spacing: 0.05em;">
+        <a href="../admin" style="color: var(--accent-gold); font-weight: 500; text-decoration: none;">✦ Registry Admin</a>
+        <a href="../privacy/" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.4)'">Privacy Charter</a>
+        <a href="../security/" style="color: #fff; text-decoration: none; font-weight: 500;">Security Protocol</a>
+        <a href="../helipad/" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.4)'">FAA Helipad License</a>
+      </div>
+      
+      <div style="height: 1px; background: rgba(255,255,255,0.03); margin: 3rem 0 2rem;"></div>
+      <p style="font-family: Outfit, sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-weight: 300;">&copy; 2026 Elysium Residences Group. Developed by Antigravity.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../app.js" defer></script>
+  
+  <!-- Diagnostic Panel Handler -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const diagBtn = document.getElementById('btn-initiate-diagnostic');
+      const logsContainer = document.getElementById('diagnostic-logs-container');
+      
+      const bar1 = document.getElementById('metric-bar-1');
+      const bar2 = document.getElementById('metric-bar-2');
+      const bar3 = document.getElementById('metric-bar-3');
+      const bar4 = document.getElementById('metric-bar-4');
+      
+      const pct1 = document.getElementById('metric-percent-1');
+      const pct2 = document.getElementById('metric-percent-2');
+      const pct3 = document.getElementById('metric-percent-3');
+      const pct4 = document.getElementById('metric-percent-4');
+
+      const logs = [
+        document.getElementById('log-line-1'),
+        document.getElementById('log-line-2'),
+        document.getElementById('log-line-3'),
+        document.getElementById('log-line-4'),
+        document.getElementById('log-line-5'),
+        document.getElementById('log-line-6')
+      ];
+
+      diagBtn.addEventListener('click', () => {
+        diagBtn.innerText = 'EXECUTING SECURITY SCAN...';
+        diagBtn.disabled = true;
+        diagBtn.style.opacity = '0.7';
+        diagBtn.style.cursor = 'not-allowed';
+        
+        // Show console logs container
+        logsContainer.style.display = 'block';
+        logsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Trigger rolling logs sequentially
+        let currentLogIndex = 0;
+        const logInterval = setInterval(() => {
+          if (currentLogIndex < logs.length) {
+            logs[currentLogIndex].style.display = 'block';
+            logsContainer.scrollTop = logsContainer.scrollHeight;
+            currentLogIndex++;
+          } else {
+            clearInterval(logInterval);
+            
+            // diagnostic sweeps complete! Sweep meters to absolute luxury parameters
+            sweepMeters();
+          }
+        }, 400);
+      });
+
+      function sweepMeters() {
+        const targets = [99.98, 99.96, 100.0, 99.95];
+        const bars = [bar1, bar2, bar3, bar4];
+        const pcts = [pct1, pct2, pct3, pct4];
+        
+        bars.forEach((bar, i) => {
+          bar.style.width = targets[i] + '%';
+          bar.style.background = 'linear-gradient(90deg, #4cd137, #4cd137)';
+          bar.style.boxShadow = '0 0 10px rgba(76,209,55,0.4)';
+        });
+
+        pcts.forEach((pct, i) => {
+          let currentPct = parseFloat(pct.innerText);
+          const targetPct = targets[i];
+          const increment = (targetPct - currentPct) / 20;
+          
+          let steps = 0;
+          const pctInterval = setInterval(() => {
+            if (steps < 20) {
+              currentPct += increment;
+              pct.innerText = currentPct.toFixed(2) + '%';
+              pct.style.color = '#4cd137';
+              steps++;
+            } else {
+              clearInterval(pctInterval);
+              pct.innerText = targetPct.toFixed(2) + '%';
+              
+              if(i === 3) {
+                diagBtn.innerText = 'DIAGNOSTIC ARCHIVE VERIFIED ✓';
+              }
+            }
+          }, 30);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
