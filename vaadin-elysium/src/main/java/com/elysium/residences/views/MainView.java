@@ -88,6 +88,10 @@ public class MainView extends Div {
                 "  script.src = 'app.js';" +
                 "  script.async = true;" +
                 "  document.body.appendChild(script);" +
+                "} else {" +
+                "  if (typeof window.initElysiumApp === 'function') {" +
+                "    window.initElysiumApp();" +
+                "  }" +
                 "}"
         );
     }

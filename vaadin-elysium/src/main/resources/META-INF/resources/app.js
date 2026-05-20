@@ -4,6 +4,22 @@
 
 function initElysium() {
 
+  // Clear body loaded class first to ensure that CSS animations re-trigger cleanly on route changes
+  document.body.classList.remove('loaded');
+
+  // Cleanup previously registered global event listeners to prevent duplicate execution & memory leaks on route changes
+  if (window.elysiumListeners) {
+    window.elysiumListeners.forEach(item => {
+      item.target.removeEventListener(item.type, item.listener, item.options);
+    });
+  }
+  window.elysiumListeners = [];
+
+  function addGlobalListener(target, type, listener, options) {
+    target.addEventListener(type, listener, options);
+    window.elysiumListeners.push({ target, type, listener, options });
+  }
+
   // ==========================================================================
   // 0. LUXURY PRELOADER COORDINATOR
   // ==========================================================================
@@ -28,19 +44,24 @@ function initElysium() {
     document.body.classList.add('loaded');
   }
 
+  // Smart SPA navigation preloader handling: if this is a route re-entry, bypass long load animations for immediate response
+  const isSpaTransition = window.ElysiumInitialized === true;
+  const revealDelay = isSpaTransition ? 150 : 2500;
+  const completeDelay = isSpaTransition ? 100 : 2000;
+
   // Bind to window load event with smart immediate-loaded check for single-page applications
   if (document.readyState === 'complete') {
     // Page is already fully loaded, run the deliberate luxury aesthetic reveal delay immediately
-    setTimeout(revealSite, 2000);
+    setTimeout(revealSite, completeDelay);
   } else {
-    window.addEventListener('load', () => {
+    addGlobalListener(window, 'load', () => {
       // Deliberate luxury delay to let the majestic self-drawing gold crest animation complete its initial loop
-      setTimeout(revealSite, 2500);
+      setTimeout(revealSite, revealDelay);
     });
   }
 
   // Strict safety fallback: reveal site after 4.5 seconds regardless of loaded assets
-  setTimeout(revealSite, 4500);
+  setTimeout(revealSite, isSpaTransition ? 300 : 4500);
 
   // ==========================================================================
   // 1. PREMIUM CUSTOM CURSOR
@@ -49,7 +70,7 @@ function initElysium() {
   const cursorDot = document.getElementById('custom-cursor-dot');
   
   if (cursor && cursorDot) {
-    document.addEventListener('mousemove', (e) => {
+    addGlobalListener(document, 'mousemove', (e) => {
       // Use requestAnimationFrame for performance
       window.requestAnimationFrame(() => {
         cursor.style.left = `${e.clientX}px`;
@@ -78,7 +99,7 @@ function initElysium() {
   const heroImage = document.getElementById('hero-image');
   const scrollIndicator = document.querySelector('.scroll-indicator');
   
-  window.addEventListener('scroll', () => {
+  addGlobalListener(window, 'scroll', () => {
     const scrollPos = window.scrollY;
     
     // Header state transformation
@@ -473,7 +494,7 @@ function initElysium() {
   renderCalendar(currentYear, currentMonth);
   
   // Universal click away to close open dropdowns
-  document.addEventListener('click', () => {
+  addGlobalListener(document, 'click', () => {
     customSelects.forEach(select => select.classList.remove('open'));
     if (dateContainer) {
       dateContainer.classList.remove('open');
@@ -815,8 +836,8 @@ function initElysium() {
   });
 
   // Attach global scroll/resize listeners for interactive scroll tracking
-  window.addEventListener('scroll', updateScrollTracker);
-  window.addEventListener('resize', updateScrollTracker);
+  addGlobalListener(window, 'scroll', updateScrollTracker);
+  addGlobalListener(window, 'resize', updateScrollTracker);
 
   // Initialize display with Penthouse
   updateSuiteDisplay('penthouse');
@@ -831,6 +852,10 @@ function initElysium() {
     rootMargin: '0px 0px -50px 0px'
   };
 
+  if (window.elysiumRevealObserver) {
+    window.elysiumRevealObserver.disconnect();
+  }
+
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -839,6 +864,7 @@ function initElysium() {
       }
     });
   }, observerOptions);
+  window.elysiumRevealObserver = revealObserver;
 
   revealElements.forEach(element => {
     revealObserver.observe(element);
@@ -914,7 +940,7 @@ function initElysium() {
     });
 
     // Keyboard bindings
-    document.addEventListener('keydown', (e) => {
+    addGlobalListener(document, 'keydown', (e) => {
       if (!lightbox.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') navigateGallery(-1);
@@ -1100,9 +1126,11 @@ function initElysium() {
   }
 }
 
+window.initElysiumApp = initElysium;
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initElysium);
+  document.addEventListener('DOMContentLoaded', window.initElysiumApp);
 } else {
-  setTimeout(initElysium, 150);
+  setTimeout(window.initElysiumApp, 150);
 }
 

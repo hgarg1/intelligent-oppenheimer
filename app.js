@@ -2,7 +2,23 @@
    ELYSIUM RESIDENCES - CLIENT LOGIC & INTERACTIONS
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initElysium() {
+
+  // Clear body loaded class first to ensure that CSS animations re-trigger cleanly on route changes
+  document.body.classList.remove('loaded');
+
+  // Cleanup previously registered global event listeners to prevent duplicate execution & memory leaks on route changes
+  if (window.elysiumListeners) {
+    window.elysiumListeners.forEach(item => {
+      item.target.removeEventListener(item.type, item.listener, item.options);
+    });
+  }
+  window.elysiumListeners = [];
+
+  function addGlobalListener(target, type, listener, options) {
+    target.addEventListener(type, listener, options);
+    window.elysiumListeners.push({ target, type, listener, options });
+  }
 
   // ==========================================================================
   // 0. LUXURY PRELOADER COORDINATOR
@@ -28,14 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loaded');
   }
 
-  // Bind to window load event
-  window.addEventListener('load', () => {
-    // Deliberate luxury delay to let the majestic self-drawing gold crest animation complete its initial loop
-    setTimeout(revealSite, 2500);
-  });
+  // Smart SPA navigation preloader handling: if this is a route re-entry, bypass long load animations for immediate response
+  const isSpaTransition = window.ElysiumInitialized === true;
+  const revealDelay = isSpaTransition ? 150 : 2500;
+  const completeDelay = isSpaTransition ? 100 : 2000;
+
+  // Bind to window load event with smart immediate-loaded check for single-page applications
+  if (document.readyState === 'complete') {
+    // Page is already fully loaded, run the deliberate luxury aesthetic reveal delay immediately
+    setTimeout(revealSite, completeDelay);
+  } else {
+    addGlobalListener(window, 'load', () => {
+      // Deliberate luxury delay to let the majestic self-drawing gold crest animation complete its initial loop
+      setTimeout(revealSite, revealDelay);
+    });
+  }
 
   // Strict safety fallback: reveal site after 4.5 seconds regardless of loaded assets
-  setTimeout(revealSite, 4500);
+  setTimeout(revealSite, isSpaTransition ? 300 : 4500);
 
   // ==========================================================================
   // 1. PREMIUM CUSTOM CURSOR
@@ -44,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cursorDot = document.getElementById('custom-cursor-dot');
   
   if (cursor && cursorDot) {
-    document.addEventListener('mousemove', (e) => {
+    addGlobalListener(document, 'mousemove', (e) => {
       // Use requestAnimationFrame for performance
       window.requestAnimationFrame(() => {
         cursor.style.left = `${e.clientX}px`;
@@ -73,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroImage = document.getElementById('hero-image');
   const scrollIndicator = document.querySelector('.scroll-indicator');
   
-  window.addEventListener('scroll', () => {
+  addGlobalListener(window, 'scroll', () => {
     const scrollPos = window.scrollY;
     
     // Header state transformation
@@ -468,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCalendar(currentYear, currentMonth);
   
   // Universal click away to close open dropdowns
-  document.addEventListener('click', () => {
+  addGlobalListener(document, 'click', () => {
     customSelects.forEach(select => select.classList.remove('open'));
     if (dateContainer) {
       dateContainer.classList.remove('open');
@@ -810,8 +836,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Attach global scroll/resize listeners for interactive scroll tracking
-  window.addEventListener('scroll', updateScrollTracker);
-  window.addEventListener('resize', updateScrollTracker);
+  addGlobalListener(window, 'scroll', updateScrollTracker);
+  addGlobalListener(window, 'resize', updateScrollTracker);
 
   // Initialize display with Penthouse
   updateSuiteDisplay('penthouse');
@@ -826,6 +852,10 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -50px 0px'
   };
 
+  if (window.elysiumRevealObserver) {
+    window.elysiumRevealObserver.disconnect();
+  }
+
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -834,6 +864,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, observerOptions);
+  window.elysiumRevealObserver = revealObserver;
 
   revealElements.forEach(element => {
     revealObserver.observe(element);
@@ -909,7 +940,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Keyboard bindings
-    document.addEventListener('keydown', (e) => {
+    addGlobalListener(document, 'keydown', (e) => {
       if (!lightbox.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') navigateGallery(-1);
@@ -1003,43 +1034,103 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Form submit verification simulation
+    // Form submit verification server bridge
     conciergeForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
       const clientName = document.getElementById('booking-name').value;
-      const suiteInput = document.getElementById('booking-suite');
-      
-      // Get display text from selected custom option
-      let selectedSuiteText = 'The Grand Penthouse';
-      const suiteContainer = document.getElementById('custom-select-suite-container');
-      if (suiteContainer) {
-        const selectedOpt = suiteContainer.querySelector('.custom-select-option.selected');
-        if (selectedOpt) {
-          selectedSuiteText = selectedOpt.innerText.split('(')[0].trim();
-        }
-      }
-      
+      const clientEmail = document.getElementById('booking-email').value;
+      const clientPhone = document.getElementById('booking-phone').value;
+      const suiteInput = document.getElementById('booking-suite').value;
       const selectedDate = document.getElementById('booking-date').value;
-      
-      // Format the showing date beautifully for the luxury VIP registry card
-      let formattedShowingDate = selectedDate;
-      if (selectedDate) {
-        const dateParts = selectedDate.split('-');
-        if (dateParts.length === 3) {
-          const dateObj = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-          formattedShowingDate = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      const selectedTime = document.getElementById('booking-time').value;
+      const specialRequests = document.getElementById('booking-notes').value;
+
+      if (window.VaadinView && window.VaadinView.$server) {
+        window.VaadinView.$server.submitBooking(clientName, clientEmail, clientPhone, suiteInput, selectedDate, selectedTime, specialRequests)
+          .then(response => {
+            if (response === 'SUCCESS') {
+              // Get display text from selected custom option
+              let selectedSuiteText = 'The Grand Penthouse';
+              const suiteContainer = document.getElementById('custom-select-suite-container');
+              if (suiteContainer) {
+                const selectedOpt = suiteContainer.querySelector('.custom-select-option.selected');
+                if (selectedOpt) {
+                  selectedSuiteText = selectedOpt.innerText.split('(')[0].trim();
+                }
+              }
+              
+              // Format the showing date beautifully for the luxury VIP registry card
+              let formattedShowingDate = selectedDate;
+              if (selectedDate) {
+                const dateParts = selectedDate.split('-');
+                if (dateParts.length === 3) {
+                  const dateObj = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+                  formattedShowingDate = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                }
+              }
+              
+              // Structure dynamic luxury greeting text
+              const successMessage = document.getElementById('success-message');
+              successMessage.innerHTML = `Welcome to the registry, <strong>${clientName}</strong>. Your showing of <strong>${selectedSuiteText}</strong> has been secured for <strong>${formattedShowingDate}</strong>. Our Chief Butler will make contact to deliver flight coordinate clearances and customized entourage services.`;
+              
+              // Animate transition between form and success cards
+              bookingFormState.style.display = 'none';
+              bookingSuccessState.style.display = 'block';
+            } else {
+              // Luxury alert style
+              const errorBanner = document.createElement('div');
+              errorBanner.className = 'error-banner';
+              errorBanner.style.cssText = 'background: rgba(220,53,69,0.15); border: 1px solid #dc3545; color: #ff6b6b; padding: 12px; margin-bottom: 20px; border-radius: 8px; font-family: Outfit, sans-serif; font-size: 14px; text-align: center; box-shadow: 0 0 15px rgba(220,53,69,0.25);';
+              errorBanner.innerText = response.replace('ERROR: ', '');
+              
+              // Remove previous error banner if exists
+              const oldBanner = conciergeForm.querySelector('.error-banner');
+              if (oldBanner) oldBanner.remove();
+              
+              conciergeForm.insertBefore(errorBanner, conciergeForm.firstChild);
+              errorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          })
+          .catch(err => {
+            console.error(err);
+            alert("An error occurred. Please try again.");
+          });
+      } else {
+        // Fallback for standalone/mock mode
+        let selectedSuiteText = 'The Grand Penthouse';
+        const suiteContainer = document.getElementById('custom-select-suite-container');
+        if (suiteContainer) {
+          const selectedOpt = suiteContainer.querySelector('.custom-select-option.selected');
+          if (selectedOpt) {
+            selectedSuiteText = selectedOpt.innerText.split('(')[0].trim();
+          }
         }
+        
+        let formattedShowingDate = selectedDate;
+        if (selectedDate) {
+          const dateParts = selectedDate.split('-');
+          if (dateParts.length === 3) {
+            const dateObj = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+            formattedShowingDate = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+          }
+        }
+        
+        const successMessage = document.getElementById('success-message');
+        successMessage.innerHTML = `Welcome to the registry, <strong>${clientName}</strong>. Your showing of <strong>${selectedSuiteText}</strong> has been secured for <strong>${formattedShowingDate}</strong>. (Simulation Mode)`;
+        
+        bookingFormState.style.display = 'none';
+        bookingSuccessState.style.display = 'block';
       }
-      
-      // Structure dynamic luxury greeting text
-      const successMessage = document.getElementById('success-message');
-      successMessage.innerHTML = `Welcome to the registry, <strong>${clientName}</strong>. Your showing of <strong>${selectedSuiteText}</strong> has been secured for <strong>${formattedShowingDate}</strong>. Our Chief Butler will make contact to deliver flight coordinate clearances and customized entourage services.`;
-      
-      // Animate transition between form and success cards
-      bookingFormState.style.display = 'none';
-      bookingSuccessState.style.display = 'block';
     });
   }
+}
 
-});
+window.initElysiumApp = initElysium;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', window.initElysiumApp);
+} else {
+  setTimeout(window.initElysiumApp, 150);
+}
+
