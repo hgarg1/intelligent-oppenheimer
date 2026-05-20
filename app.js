@@ -46,8 +46,8 @@ function initElysium() {
 
   // Smart SPA navigation preloader handling: if this is a route re-entry, bypass long load animations for immediate response
   const isSpaTransition = window.ElysiumInitialized === true;
-  const revealDelay = isSpaTransition ? 150 : 2500;
-  const completeDelay = isSpaTransition ? 100 : 2000;
+  const revealDelay = isSpaTransition ? 150 : 3500;
+  const completeDelay = isSpaTransition ? 100 : 3200;
 
   // Bind to window load event with smart immediate-loaded check for single-page applications
   if (document.readyState === 'complete') {
@@ -60,8 +60,8 @@ function initElysium() {
     });
   }
 
-  // Strict safety fallback: reveal site after 4.5 seconds regardless of loaded assets
-  setTimeout(revealSite, isSpaTransition ? 300 : 4500);
+  // Strict safety fallback: reveal site after 5.0 seconds regardless of loaded assets
+  setTimeout(revealSite, isSpaTransition ? 300 : 5000);
 
   // ==========================================================================
   // 1. PREMIUM CUSTOM CURSOR
