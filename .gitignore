@@ -1,0 +1,17 @@
+# Top level ignores
+apache-maven-3.8.8/
+
+# Vaadin project ignores
+vaadin-elysium/target/
+vaadin-elysium/node_modules/
+vaadin-elysium/.vaadin/
+vaadin-elysium/vite.generated.ts
+vaadin-elysium/frontend/generated/
+vaadin-elysium/elysium.db
+vaadin-elysium/elysium.db-journal
+
+# IDEs and temp files
+.idea/
+.vscode/
+*.iml
+*.log
