@@ -86,4 +86,19 @@ public class SQLiteDialect extends Dialect {
     public String getCurrentTimestampSelectString() {
         return "select current_timestamp";
     }
+
+    @Override
+    public boolean hasAlterTable() {
+        return false;
+    }
+
+    @Override
+    public boolean dropConstraints() {
+        return false;
+    }
+
+    @Override
+    public String getAddColumnString() {
+        return "add column";
+    }
 }

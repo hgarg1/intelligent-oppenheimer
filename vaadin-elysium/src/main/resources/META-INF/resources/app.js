@@ -28,11 +28,16 @@ function initElysium() {
     document.body.classList.add('loaded');
   }
 
-  // Bind to window load event
-  window.addEventListener('load', () => {
-    // Deliberate luxury delay to let the majestic self-drawing gold crest animation complete its initial loop
-    setTimeout(revealSite, 2500);
-  });
+  // Bind to window load event with smart immediate-loaded check for single-page applications
+  if (document.readyState === 'complete') {
+    // Page is already fully loaded, run the deliberate luxury aesthetic reveal delay immediately
+    setTimeout(revealSite, 2000);
+  } else {
+    window.addEventListener('load', () => {
+      // Deliberate luxury delay to let the majestic self-drawing gold crest animation complete its initial loop
+      setTimeout(revealSite, 2500);
+    });
+  }
 
   // Strict safety fallback: reveal site after 4.5 seconds regardless of loaded assets
   setTimeout(revealSite, 4500);

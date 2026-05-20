@@ -77,6 +77,19 @@ public class MainView extends Div {
         super.onAttach(attachEvent);
         // Expose this Java component to the client-side window object to allow JavaScript callbacks
         attachEvent.getUI().getPage().executeJs("window.VaadinView = $0;", getElement());
+
+        // Fix: Inject and execute client-side app.js dynamically.
+        // Script elements inserted via innerHTML are not executed by browsers.
+        // Appending a script element programmatically bypasses this security restriction.
+        attachEvent.getUI().getPage().executeJs(
+                "if (!window.ElysiumInitialized) {" +
+                "  window.ElysiumInitialized = true;" +
+                "  const script = document.createElement('script');" +
+                "  script.src = 'app.js';" +
+                "  script.async = true;" +
+                "  document.body.appendChild(script);" +
+                "}"
+        );
     }
 
     /**
