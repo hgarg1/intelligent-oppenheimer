@@ -4,6 +4,15 @@
 
 function initElysium() {
 
+  const preloader = document.getElementById('luxury-preloader');
+  const heroTitle = document.querySelector('.hero-title');
+  
+  // If the essential luxury elements are not yet rendered by Vaadin, defer initialization
+  if (!preloader || !heroTitle) {
+    setTimeout(initElysium, 50);
+    return;
+  }
+
   // Clear body loaded class first to ensure that CSS animations re-trigger cleanly on route changes
   document.body.classList.remove('loaded');
 
@@ -45,7 +54,7 @@ function initElysium() {
   }
 
   // Smart SPA navigation preloader handling: if this is a route re-entry, bypass long load animations for immediate response
-  const isSpaTransition = window.ElysiumInitialized === true;
+  const isSpaTransition = window.ElysiumScriptLoaded === true;
   const revealDelay = isSpaTransition ? 150 : 3500;
   const completeDelay = isSpaTransition ? 100 : 3200;
 
@@ -1127,6 +1136,7 @@ function initElysium() {
 }
 
 window.initElysiumApp = initElysium;
+window.ElysiumScriptLoaded = true;
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', window.initElysiumApp);
