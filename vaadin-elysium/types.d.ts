@@ -8,3 +8,8 @@ declare module '*.css' {
   const content: CSSResultGroup;
   export default content;
 }
+
+declare module '*generated-flow-imports.js' {
+  const content: any;
+  export default content;
+}
