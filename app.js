@@ -32,7 +32,6 @@ function initElysium() {
   // ==========================================================================
   // 0. LUXURY PRELOADER COORDINATOR
   // ==========================================================================
-  const preloader = document.getElementById('luxury-preloader');
   
   // Safe fallback to ensure the site reveals if the window load event has already fired
   let preloaderRevealed = false;
