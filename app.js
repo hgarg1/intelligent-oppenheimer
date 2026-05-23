@@ -86,6 +86,39 @@ function initElysium() {
 
 
   // ==========================================================================
+  // 0.5. CINEMATIC BACKGROUND VIDEO TRANSITION
+  // ==========================================================================
+  const heroVideo = document.getElementById('hero-video');
+  const heroImg = document.getElementById('hero-image');
+  
+  if (heroVideo && heroImg) {
+    // Reset video state on route re-entry or SPA navigation
+    heroVideo.classList.remove('active');
+    heroVideo.pause();
+    heroVideo.currentTime = 0;
+    heroImg.style.opacity = ''; // Reset static twilight image opacity
+    heroImg.style.transition = '';
+    
+    // Clear any previous scheduled background video timeouts
+    if (window.heroVideoTimeout) {
+      clearTimeout(window.heroVideoTimeout);
+    }
+    
+    // Schedule the transition to AI generated city traffic video after 15 seconds
+    window.heroVideoTimeout = setTimeout(() => {
+      // Warm up and play the video in the background before fading it in
+      heroVideo.play().then(() => {
+        heroVideo.classList.add('active');
+        heroImg.style.transition = 'opacity 2.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        heroImg.style.opacity = '0'; // Smoothly crossfade and hide the static image
+      }).catch(err => {
+        console.warn("Hero background video playback blocked or deferred:", err);
+      });
+    }, 15000); // 15 seconds delay
+  }
+
+
+  // ==========================================================================
   // 1. PREMIUM CUSTOM CURSOR
   // ==========================================================================
   const cursor = document.getElementById('custom-cursor');
