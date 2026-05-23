@@ -37,26 +37,39 @@ function initElysium() {
   // Safe fallback to ensure the site reveals if the window load event has already fired
   let preloaderRevealed = false;
   
+  // Smart SPA navigation preloader handling: if this is a route re-entry, bypass long load animations for immediate response
+  const isSpaTransition = window.ElysiumColdStartCompleted === true;
+  const revealDelay = isSpaTransition ? 150 : 3500;
+  const completeDelay = isSpaTransition ? 100 : 3200;
+
   function revealSite() {
     if (preloaderRevealed) return;
     preloaderRevealed = true;
     
     if (preloader) {
-      preloader.classList.add('fade-out');
-      // Remove element from DOM after transition completes to save resources
-      setTimeout(() => {
-        preloader.remove();
-      }, 1200);
+      if (isSpaTransition) {
+        preloader.classList.add('spa-transition');
+        preloader.classList.add('fade-out');
+        // Snappy transition reveal
+        setTimeout(() => {
+          document.body.classList.add('loaded');
+          preloader.remove();
+        }, 300);
+      } else {
+        preloader.classList.add('fade-out');
+        // Wait for the full 1.2s fade-out to finish before triggering page loaded reveals to prevent overlapping visual blur!
+        setTimeout(() => {
+          document.body.classList.add('loaded');
+          preloader.remove();
+        }, 1200);
+      }
+    } else {
+      document.body.classList.add('loaded');
     }
     
-    // Add loaded class to body to trigger the premium hero entry animations
-    document.body.classList.add('loaded');
+    // Set cold start completed flag for subsequent transitions
+    window.ElysiumColdStartCompleted = true;
   }
-
-  // Smart SPA navigation preloader handling: if this is a route re-entry, bypass long load animations for immediate response
-  const isSpaTransition = window.ElysiumScriptLoaded === true;
-  const revealDelay = isSpaTransition ? 150 : 3500;
-  const completeDelay = isSpaTransition ? 100 : 3200;
 
   // Bind to window load event with smart immediate-loaded check for single-page applications
   if (document.readyState === 'complete') {
@@ -71,6 +84,7 @@ function initElysium() {
 
   // Strict safety fallback: reveal site after 5.0 seconds regardless of loaded assets
   setTimeout(revealSite, isSpaTransition ? 300 : 5000);
+
 
   // ==========================================================================
   // 1. PREMIUM CUSTOM CURSOR
