@@ -504,6 +504,8 @@ body.loaded .hero-bg img {
   opacity: 0.45; /* Soft visual motion while preserving extreme typography contrast */
 }
 
+
+
 .hero::after {
   content: '';
   position: absolute;
